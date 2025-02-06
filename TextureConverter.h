@@ -5,8 +5,7 @@
 class TextureConverter
 {
 public:
-	TextureConverter();
-	~TextureConverter();
+	
 	/// <summary>
 	/// テクスチャをWICからDDSに変換する
 	/// </summary>
@@ -25,8 +24,19 @@ private:
 	/// <returns></returns>
 	static std::wstring ConvertMultiByteStringToWideString(const std::string& filepath);
 
+	/// <summary>
+	/// フォルダパスとファイル名を分離する
+	/// </summary>
+	/// <param name="filePath">ファイルパス</param>
+	void SeparateFilePath(const std::wstring& filePath);
+
+	/// <summary>
+	/// DDSテクスチャとしてファイル書き出し
+	/// </summary>
+	void SaveToDDSTextureToFile();
+
 	DirectX::TexMetadata metadata_; 
-	DirectX::ScratchImage scratchImage;
+	DirectX::ScratchImage scratchImage_;
 
 	//ディレクトリバス 
 	std::wstring directoryPath_; 
